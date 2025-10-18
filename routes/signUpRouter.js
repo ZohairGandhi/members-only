@@ -1,8 +1,8 @@
 const { Router } = require("express");
-const signUpRouter = Router();
-const signUpController = require("../controllers/signUpController");
+const router = Router();
+const controller = require("../controllers/signUpController");
 
-signUpRouter.get("/", (req, res) => res.render("sign-up"));
-signUpRouter.post("/", signUpController.addUser);
+router.get("/", (req, res) => res.render("sign-up"));
+router.post("/", controller.addUser);
 
-module.exports = signUpRouter;
+module.exports = router;

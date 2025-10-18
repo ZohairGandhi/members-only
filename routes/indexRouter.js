@@ -1,6 +1,10 @@
 const { Router } = require("express");
-const indexRouter = Router();
+const db = require("../db/queries");
+const router = Router();
 
-indexRouter.get("/", (req, res) => res.send("Index Page"));
+router.get("/", async (req, res) => {
+  const messages = await db.getMessages();
+  res.render("index", { messages });
+});
 
-module.exports = indexRouter;
+module.exports = router;

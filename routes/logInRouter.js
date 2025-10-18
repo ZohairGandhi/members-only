@@ -1,6 +1,6 @@
 const { Router } = require("express");
-const logInRouter = Router();
+const router = Router();
 
-logInRouter.get("/", (req, res) => res.render("log-in"));
+router.get("/", (req, res) => res.render("log-in"));
 
-module.exports = logInRouter;
+module.exports = router;
