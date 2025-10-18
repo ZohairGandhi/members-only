@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Members Only</title>
+    <!-- <link href="css/style.css" rel="stylesheet"> -->
+  </head>
+  <body>
+    <a href="/post">Create Post</a>
+
+    <% messages.forEach(msg => { %>
+      <p><%= msg.username %></p>
+      <p><%= msg.added %></p>
+      <h1><%= msg.title %></h1>
+      <p><%= msg.content %></p>
+    <% }) %>
+  </body>
+</html>

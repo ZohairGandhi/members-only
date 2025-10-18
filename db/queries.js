@@ -26,9 +26,19 @@ async function createPost(userId, title, content, added) {
   );
 }
 
+async function getMessages() {
+  const { rows } = await pool.query(`
+    SELECT title, content, added, username FROM messages
+    INNER JOIN users ON messages.user_id = users.id
+    ORDER BY added DESC
+  `);
+  return rows;
+}
+
 module.exports = {
   addUser,
   getUserByUsername,
   getUserById,
   createPost,
+  getMessages,
 };
