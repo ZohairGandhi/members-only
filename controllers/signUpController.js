@@ -33,8 +33,7 @@ exports.addUser = [
     try {
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
-        console.log(errors.array());
-        return;
+        res.send(JSON.stringify(errors.array()));
       }
 
       const { firstName, lastName, username, password } = matchedData(req);
