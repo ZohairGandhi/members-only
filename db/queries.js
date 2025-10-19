@@ -35,10 +35,18 @@ async function getMessages() {
   return rows;
 }
 
+async function updateUserType(id, user_type) {
+  await pool.query(`UPDATE users SET user_type = $1 WHERE id = $2`, [
+    user_type,
+    id,
+  ]);
+}
+
 module.exports = {
   addUser,
   getUserByUsername,
   getUserById,
   createPost,
   getMessages,
+  updateUserType,
 };

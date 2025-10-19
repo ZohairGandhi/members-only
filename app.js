@@ -8,6 +8,7 @@ const indexRouter = require("./routes/indexRouter");
 const signUpRouter = require("./routes/signUpRouter");
 const logInRouter = require("./routes/logInRouter");
 const postRouter = require("./routes/postRouter");
+const roleRouter = require("./routes/roleRouter");
 const pool = require("./db/pool");
 
 const app = express();
@@ -34,6 +35,7 @@ app.use("/", indexRouter);
 app.use("/sign-up", signUpRouter);
 app.use("/log-in", logInRouter);
 app.use("/post", postRouter);
+app.use("/", roleRouter);
 app.use("/", authRouter);
 
 const PORT = 3000;
