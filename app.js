@@ -7,7 +7,7 @@ const pgSession = require("connect-pg-simple")(session);
 const indexRouter = require("./routes/indexRouter");
 const signUpRouter = require("./routes/signUpRouter");
 const logInRouter = require("./routes/logInRouter");
-const postRouter = require("./routes/postRouter");
+const msgRouter = require("./routes/msgRouter");
 const roleRouter = require("./routes/roleRouter");
 const pool = require("./db/pool");
 
@@ -34,7 +34,7 @@ const authRouter = require("./routes/auth");
 app.use("/", indexRouter);
 app.use("/sign-up", signUpRouter);
 app.use("/log-in", logInRouter);
-app.use("/post", postRouter);
+app.use("/message", msgRouter);
 app.use("/", roleRouter);
 app.use("/", authRouter);
 
