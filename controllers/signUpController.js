@@ -23,7 +23,7 @@ const validateUser = [
     ),
   body("confirmPassword")
     .trim()
-    .equals(body("password"))
+    .custom((value, { req }) => value === req.body.password)
     .withMessage("Passwords do not match"),
 ];
 
