@@ -45,7 +45,7 @@ router.post(
   }),
 );
 
-router.post("/log-out", (req, res, next) => {
+router.get("/log-out", (req, res, next) => {
   req.logout((err) => {
     if (err) {
       return next(err);
@@ -53,4 +53,5 @@ router.post("/log-out", (req, res, next) => {
     res.redirect("/");
   });
 });
+
 module.exports = router;
