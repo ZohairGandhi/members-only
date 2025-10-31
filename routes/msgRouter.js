@@ -18,4 +18,14 @@ router.post("/", async (req, res, next) => {
   }
 });
 
+router.post("/:id", async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    await db.deleteMessage(id);
+    res.redirect("/");
+  } catch (err) {
+    return next(err);
+  }
+});
+
 module.exports = router;

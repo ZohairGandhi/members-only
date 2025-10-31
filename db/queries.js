@@ -28,7 +28,7 @@ async function createMessage(userId, title, content, added) {
 
 async function getMessages() {
   const { rows } = await pool.query(`
-    SELECT title, content, added, username FROM messages
+    SELECT messages.id, title, content, added, username FROM messages
     INNER JOIN users ON messages.user_id = users.id
     ORDER BY added DESC
   `);
@@ -36,10 +36,14 @@ async function getMessages() {
 }
 
 async function updateUserType(id, user_type) {
-  await pool.query(`UPDATE users SET user_type = $1 WHERE id = $2`, [
+  await pool.query("UPDATE users SET user_type = $1 WHERE id = $2", [
     user_type,
     id,
   ]);
+}
+
+async function deleteMessage(id) {
+  await pool.query("DELETE FROM messages WHERE id = $1", [id]);
 }
 
 module.exports = {
@@ -49,4 +53,5 @@ module.exports = {
   createMessage,
   getMessages,
   updateUserType,
+  deleteMessage,
 };

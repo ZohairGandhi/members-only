@@ -26,9 +26,9 @@
   </form>
 
   <% messages.forEach((msg) => { %>
-  <form class="message" action="/message/:<%= msg.id %>" method="post">
+  <form class="message" action="/message/<%= msg.id %>" method="post">
     <div>
-      <% if (currentUser) { %>
+      <% if (currentUser?.user_type !== "basic") { %>
       <p><%= msg.username %></p>
       <p><%= msg.added %> ago</p>
       <% } else { %>
