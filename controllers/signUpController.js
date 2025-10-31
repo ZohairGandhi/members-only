@@ -13,8 +13,13 @@ const validateUser = [
     .withMessage("Last name must only contain letters"),
   body("username")
     .trim()
-    .isLength({ min: 8 })
-    .withMessage("Username must be at least 8 char long"),
+    .custom(async (value) => {
+      const user = await db.getUserByUsername(value);
+      if (user) {
+        throw new Error("Username already in use");
+      }
+    })
+    .withMessage("Username already in use"),
   body("password")
     .trim()
     .isStrongPassword()
