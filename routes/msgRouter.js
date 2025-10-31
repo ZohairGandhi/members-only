@@ -1,9 +1,10 @@
 const { Router } = require("express");
 const db = require("../db/queries");
+const { isUserAuth } = require("../controllers/authMiddleware");
 
 const router = Router();
 
-router.get("/", (req, res) =>
+router.get("/", isUserAuth, (req, res) =>
   res.render("message", { title: "Members Only - New Message" }),
 );
 

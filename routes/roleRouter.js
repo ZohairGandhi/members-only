@@ -1,8 +1,9 @@
 const { Router } = require("express");
 const db = require("../db/queries");
+const { isUserAuth } = require("../controllers/authMiddleware");
 const router = Router();
 
-router.get("/membership", (req, res) =>
+router.get("/membership", isUserAuth, (req, res) =>
   res.render("membership", {
     title: "Members Only - Join the Club",
   }),
@@ -19,7 +20,7 @@ router.post("/membership", async (req, res) => {
   }
 });
 
-router.get("/admin", (req, res) =>
+router.get("/admin", isUserAuth, (req, res) =>
   res.render("admin", {
     title: "Members Only - Become an Admin",
   }),
