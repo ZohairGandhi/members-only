@@ -1,21 +1,71 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Members Only</title>
-    <!-- <link href="css/style.css" rel="stylesheet"> -->
-  </head>
-  <body>
-    <a href="/post">Create Post</a>
-    <a href="/join">Join the Club</a>
-    <a href="/admin">Further Your Control</a>
+<%- include('header', { title, currentUser }) %>
 
-    <% messages.forEach(msg => { %>
+<main>
+  <form action="/message" method="get">
+    <button type="submit" class="icon-btn create-msg-btn">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="lucide lucide-message-square-plus-icon lucide-message-square-plus"
+      >
+        <path
+          d="M22 17a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 21.286V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2z"
+        />
+        <path d="M12 8v6" />
+        <path d="M9 11h6" />
+      </svg>
+      Create Message
+    </button>
+  </form>
+
+  <% messages.forEach((msg) => { %>
+  <form class="message" action="/message/:<%= msg.id %>" method="post">
+    <div>
+      <% if (currentUser) { %>
       <p><%= msg.username %></p>
-      <p><%= msg.added %></p>
-      <h1><%= msg.title %></h1>
-      <p><%= msg.content %></p>
-    <% }) %>
-  </body>
-</html>
+      <p><%= msg.added %> ago</p>
+      <% } else { %>
+      <p><%= "*".repeat(msg.username.length) %></p>
+      <p><%= "*".repeat(msg.added.length) %> ago</p>
+      <% } %>
+    </div>
+
+    <h2><%= msg.title %></h2>
+
+    <p><%= msg.content %></p>
+
+    <% if (currentUser?.user_type === "admin") { %>
+    <button type="submit" class="icon-btn">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="lucide lucide-trash2-icon lucide-trash-2"
+      >
+        <path d="M10 11v6" />
+        <path d="M14 11v6" />
+        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6" />
+        <path d="M3 6h18" />
+        <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+      </svg>
+      Delete
+    </button>
+    <% } %>
+  </form>
+  <% }) %>
+</main>
+
+<%- include('footer') %>

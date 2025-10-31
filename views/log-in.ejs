@@ -1,20 +1,30 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Log In</title>
-    <!-- <link href="css/style.css" rel="stylesheet"> -->
-  </head>
-  <body>
-    <form action="/log-in" method="post">
-      <label for="username">Username</label>
-      <input type="text" name="username" />
+<%- include('header', { title, currentUser }) %>
 
-      <label for="password">Password</label>
-      <input type="password" name="password" />
+<main>
+  <form class="log-in-form" action="/log-in" method="post">
+    <h2>Log In</h2>
 
-      <button type="submit">Log In</button>
-    </form>
-  </body>
-</html>
+    <div class="input-pair">
+      <input
+        type="text"
+        name="username"
+        placeholder="Username"
+        maxlength="50"
+        required
+      />
+      <input
+        type="password"
+        name="password"
+        placeholder="Password"
+        maxlength="50"
+        required
+      />
+    </div>
+
+    <p>New here? <a href="/sign-up">Sign Up</a></p>
+
+    <button type="submit">Log In</button>
+  </form>
+</main>
+
+<%- include('footer') %>

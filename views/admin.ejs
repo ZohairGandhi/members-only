@@ -1,0 +1,16 @@
+<%- include('header', { title, currentUser }) %>
+
+<main>
+  <form class="membership-form" action="/admin" method="post">
+    <h2>Not enough for you? Become an admin!</h2>
+
+    <div class="input-pair">
+      <label for="passcode">What time is it?</label>
+      <input type="text" name="passcode" id="passcode" />
+    </div>
+
+    <button type="submit">Submit</button>
+  </form>
+</main>
+
+<%- include('footer') %>

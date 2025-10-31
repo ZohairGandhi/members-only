@@ -3,7 +3,9 @@ const db = require("../db/queries");
 
 const router = Router();
 
-router.get("/", (req, res) => res.render("message"));
+router.get("/", (req, res) =>
+  res.render("message", { title: "Members Only - New Message" }),
+);
 
 router.post("/", async (req, res, next) => {
   try {

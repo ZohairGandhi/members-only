@@ -2,30 +2,26 @@ const { Router } = require("express");
 const db = require("../db/queries");
 const router = Router();
 
-router.get("/join", (req, res) =>
-  res.render("role", {
-    title: "Join the Club",
-    action: "/join",
-    role: "Membership",
+router.get("/membership", (req, res) =>
+  res.render("membership", {
+    title: "Members Only - Join the Club",
   }),
 );
 
-router.post("/join", async (req, res) => {
+router.post("/membership", async (req, res) => {
   const { passcode } = req.body;
   if (passcode.trim().toLowerCase() === process.env.MEMBERSHIP_PASS) {
     const id = req.user.id;
     await db.updateUserType(id, "member");
     res.redirect("/");
   } else {
-    res.render("join");
+    res.render("membership");
   }
 });
 
 router.get("/admin", (req, res) =>
-  res.render("role", {
-    title: "Further Your Control",
-    action: "/admin",
-    role: "Admin",
+  res.render("admin", {
+    title: "Members Only - Become an Admin",
   }),
 );
 
@@ -36,7 +32,7 @@ router.post("/admin", async (req, res) => {
     await db.updateUserType(id, "admin");
     res.redirect("/");
   } else {
-    res.render("join");
+    res.render("admin");
   }
 });
 

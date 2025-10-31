@@ -1,0 +1,245 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+:root {
+  --bg-color: #1b1b1b;
+  --border: 1px solid #696969;
+  --btn-color: #006d6f;
+  --border-radius: 16px;
+  --link-color: #00a6a9;
+  --font-family: "Ubuntu Mono", monospace;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: #fff;
+  font-family: var(--font-family);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: var(--border);
+  padding: 16px;
+}
+
+.header-right {
+  display: flex;
+  gap: 8px;
+}
+
+.dropdown-content {
+  display: none;
+}
+
+.dropdown:hover .dropdown-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: max-content;
+  position: absolute;
+  right: 0;
+  padding: 8px;
+  border: var(--border);
+  border-radius: var(--border-radius);
+  background-color: var(--bg-color);
+
+  a {
+    text-decoration: none;
+    color: #fff;
+    width: fit-content;
+
+    &:hover {
+      color: var(--link-color);
+    }
+  }
+}
+
+.home-link,
+.link-btn {
+  text-decoration: none;
+  color: white;
+}
+
+.link-btn {
+  background-color: var(--btn-color);
+  padding: 4px 8px;
+  border-radius: var(--border-radius);
+
+  &:hover {
+    opacity: 0.85;
+  }
+}
+
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+}
+
+.log-in-form,
+.sign-up-form,
+.membership-form,
+.msg-form {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  margin: 0 15%;
+
+  h2 {
+    text-align: center;
+  }
+
+  .input-pair {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    input,
+    textarea {
+      appearance: none;
+      width: 100%;
+      box-sizing: border-box;
+      padding: 4px 8px;
+      border-radius: var(--border-radius);
+      font-family: var(--font-family);
+    }
+  }
+
+  a {
+    color: var(--link-color);
+  }
+
+  button {
+    appearance: none;
+    background-color: var(--btn-color);
+    color: #fff;
+    padding: 8px;
+    border: none;
+    border-radius: var(--border-radius);
+    font-family: var(--font-family);
+    font-size: 1rem;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.85;
+    }
+  }
+
+  @media screen and (min-width: 600px) {
+    margin: 0 35%;
+  }
+}
+
+.sign-up-form {
+  gap: 16px;
+
+  button {
+    margin-top: 16px;
+  }
+}
+
+.membership-form label {
+  text-align: center;
+}
+
+.message {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 0 10%;
+  border: var(--border);
+  border-radius: var(--border-radius);
+  padding: 16px;
+
+  div {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+
+    p:nth-child(2) {
+      font-size: smaller;
+      opacity: 0.5;
+    }
+  }
+
+  .icon-btn {
+    color: #e55169;
+    border: 1px solid #e55169;
+    font-size: 0.85rem;
+
+    svg {
+      height: 0.85rem;
+    }
+  }
+
+  @media screen and (min-width: 600px) {
+    margin: 0 30%;
+  }
+}
+
+.icon-btn {
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  appearance: none;
+  background: none;
+  color: #fff;
+  padding: 8px;
+  border: 1px solid #fff;
+  border-radius: var(--border-radius);
+  font-family: var(--font-family);
+  font-size: 1rem;
+  cursor: pointer;
+
+  svg {
+    height: 1rem;
+  }
+
+  &:hover {
+    opacity: 0.85;
+  }
+}
+
+.icon-btn.create-msg-btn {
+  margin: 0 10%;
+  gap: 4px;
+  border: var(--border);
+
+  @media screen and (min-width: 600px) {
+    margin: 0 30%;
+  }
+}
+
+footer {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+  padding: 16px 0;
+  border-top: var(--border);
+
+  a {
+    cursor: pointer;
+    transition: transform 250ms ease-in-out;
+  }
+
+  a:hover {
+    transform: scale(1.25);
+  }
+}

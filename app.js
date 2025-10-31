@@ -15,6 +15,8 @@ const app = express();
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
+app.use(express.static(path.join(__dirname, "public")));
+
 app.use(
   session({
     store: new pgSession({
@@ -30,6 +32,11 @@ app.use(passport.session());
 app.use(express.urlencoded({ extended: true }));
 
 const authRouter = require("./routes/auth");
+
+app.use((req, res, next) => {
+  res.locals.currentUser = req.user;
+  next();
+});
 
 app.use("/", indexRouter);
 app.use("/sign-up", signUpRouter);

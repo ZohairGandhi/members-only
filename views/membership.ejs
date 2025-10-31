@@ -1,0 +1,19 @@
+<%- include('header', { title, currentUser }) %>
+
+<main>
+  <form class="membership-form" action="/membership" method="post">
+    <h2>Feeling left out? Join the club!</h2>
+
+    <div class="input-pair">
+      <label for="passcode"
+        >Complete the sequence: <br />
+        Classic "Wingers", Ab Mentions, _______</label
+      >
+      <input type="text" name="passcode" id="passcode" />
+    </div>
+
+    <button type="submit">Submit</button>
+  </form>
+</main>
+
+<%- include('footer') %>
