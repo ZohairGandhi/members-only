@@ -149,6 +149,10 @@ main {
 .sign-up-form {
   gap: 16px;
 
+  ul {
+    color: #e55169;
+  }
+
   button {
     margin-top: 16px;
   }

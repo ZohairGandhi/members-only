@@ -38,7 +38,11 @@ exports.addUser = [
     try {
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
-        res.send(JSON.stringify(errors.array()));
+        res.render("sign-up", {
+          title: "Members Only - Sign Up",
+          errors: errors.array(),
+        });
+        return;
       }
 
       const { firstName, lastName, username, password } = matchedData(req);
