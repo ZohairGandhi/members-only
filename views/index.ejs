@@ -28,7 +28,7 @@
   <% messages.forEach((msg) => { %>
   <form class="message" action="/message/<%= msg.id %>" method="post">
     <div>
-      <% if (currentUser?.user_type !== "basic") { %>
+      <% if (["member", "admin"].includes(currentUser?.user_type)) { %>
       <p><%= msg.username %></p>
       <p><%= msg.added %> ago</p>
       <% } else { %>
