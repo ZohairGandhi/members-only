@@ -28,12 +28,19 @@ router.get("/admin", isUserAuth, (req, res) =>
 
 router.post("/admin", async (req, res) => {
   const { passcode } = req.body;
-  if (passcode.trim().toLowerCase() === process.env.ADMIN_PASS) {
+  if (
+    passcode
+      .trim()
+      .toLowerCase()
+      .replace(/[^a-z0-9]/g, "") === process.env.ADMIN_PASS
+  ) {
     const id = req.user.id;
     await db.updateUserType(id, "admin");
     res.redirect("/");
   } else {
-    res.render("admin");
+    res.render("admin", {
+      title: "Members Only - Become an Admin",
+    });
   }
 });
 
